@@ -783,7 +783,25 @@ namespace jKnepel.ProteusNet.Networking.Transporting
 
         private void InitializeDrivers()
         {
-            _driver = NetworkDriver.Create(_networkSettings);
+            if (_settings.UseWebsockets && _relayServerData.IsWebSocket == 0)
+                OnLogAdded?.Invoke("Transport is configured to use WebSockets, but Relay server data isn't. Be sure to use \"wss\" as the connection type when creating the server data (instead of \"dtls\" or \"udp\").", EMessageSeverity.Error);
+            if (!_settings.UseWebsockets && _relayServerData.IsWebSocket != 0)
+                OnLogAdded?.Invoke("Relay server data indicates usage of WebSockets, but \"Use WebSockets\" checkbox isn't checked under \"Unity Transport\" component.", EMessageSeverity.Error);
+
+            if (_settings.UseWebsockets)
+            {
+                _driver = NetworkDriver.Create(new WebSocketNetworkInterface(), _networkSettings);
+            }
+            else
+            {
+#if UNITY_WEBGL && !UNITY_EDITOR
+                Debug.LogWarning($"The application was compiled for WebGL without UseWebsockets enabled. Make sure to enable UseWebsockets to remove this warning!");
+                _driver = NetworkDriver.Create(new WebSocketNetworkInterface(), _networkSettings);
+#else
+                _driver = NetworkDriver.Create(new UDPNetworkInterface(), _networkSettings);
+#endif
+            }
+            
             _driver.RegisterPipelineStage(new NetworkProfilerPipelineStage());
 
             if (_settings.NetworkSimulationState == ESimulationState.Off)

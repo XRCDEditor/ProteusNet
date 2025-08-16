@@ -7,6 +7,7 @@
   "documentationUrl": "https://github.com/jKnepel/ProteusNet/Assets/ProteusNet/README.md",
   "license": "https://github.com/jKnepel/ProteusNet/Assets/ProteusNet/LICENSE.md",
   "dependencies": {
+    "com.unity.transport": "2.5.3"
   },
   "keywords": [
     "Networking"
