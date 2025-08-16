@@ -23,6 +23,7 @@ MonoBehaviour:
     DisconnectTimeoutMS: 30000
     HeartbeatTimeoutMS: 500
     ReconnectionTimeoutMS: 2000
+    MaxPacketQueueSize: 128
     PayloadCapacity: 6144
     WindowSize: 32
     MinimumResendTime: 64
