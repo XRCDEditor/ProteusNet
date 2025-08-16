@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace jKnepel.ProteusNet.Components
 {
     [Serializable]
+    [CreateAssetMenu(fileName = "NetworkObjectPrefabs", menuName = "ProteusNet/NetworkObjectPrefabs")]
     public class NetworkObjectPrefabs : ScriptableObject
     {
         [SerializeField] private List<string> searchPaths = new() { "Assets" };
