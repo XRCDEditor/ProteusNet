@@ -194,7 +194,7 @@ namespace jKnepel.ProteusNet.Networking.Transporting
             if (_areSettingsVisible)
             {
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("ProtocolType"), new GUIContent("Protocol Type", "The type of protocol used by the protocol."));
-                EditorGUILayout.PropertyField(property.FindPropertyRelative("UseWebsockets"), new GUIContent("UseWebsockets", "If communication should be done via websockets instead of UDP."));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("UseWebsockets"), new GUIContent("Use Websockets", "If communication should be done via websockets instead of UDP."));
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("Address"), new GUIContent("Address", "The address to which the local client will attempt to connect with."));
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("Port"), new GUIContent("Port", "The port to which the local client will attempt to connect with or the server will bind to locally."));
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("ServerListenAddress"), new GUIContent("Server Listen Address", "Address to which the local server will be bound. If no address is provided, the 0.0.0.0 address will be used instead."));

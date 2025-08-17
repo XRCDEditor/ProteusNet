@@ -795,7 +795,7 @@ namespace jKnepel.ProteusNet.Networking.Transporting
             else
             {
 #if UNITY_WEBGL && !UNITY_EDITOR
-                Debug.LogWarning($"The application was compiled for WebGL without UseWebsockets enabled. Make sure to enable UseWebsockets to remove this warning!");
+                OnLogAdded?.Invoke($"The application was compiled for WebGL without UseWebsockets enabled. Make sure to enable UseWebsockets to remove this warning!", EMessageSeverity.Error);
                 _driver = NetworkDriver.Create(new WebSocketNetworkInterface(), _networkSettings);
 #else
                 _driver = NetworkDriver.Create(new UDPNetworkInterface(), _networkSettings);
