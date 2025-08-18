@@ -169,6 +169,30 @@ namespace jKnepel.ProteusNet.Components
 
         private readonly List<TransformSnapshot> _receivedSnapshots = new();
 
+        public bool UseInterpolation
+        {
+            get => useInterpolation;
+            set => useInterpolation = value;
+        }
+
+        public float InterpolationInterval
+        {
+            get => interpolationInterval;
+            set => interpolationInterval = value;
+        }
+
+        public bool UseExtrapolation
+        {
+            get => useExtrapolation;
+            set => useExtrapolation = value;
+        }
+
+        public float ExtrapolationInterval
+        {
+            get => extrapolationInterval;
+            set => extrapolationInterval = value;
+        }
+
         // TODO : add component type configuration (CharacterController)
         // TODO : reset last values on authority change
         
